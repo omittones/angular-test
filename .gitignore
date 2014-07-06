@@ -10,3 +10,5 @@ bower_components/
 *.cache
 *.user
 *.sublime-workspace
+bin
+obj
