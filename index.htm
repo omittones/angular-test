@@ -2,27 +2,63 @@
 <head>
 	<title>Your Shopping Cart</title>
 </head>
-<body ng-controller="CartController">
-	<h1>Your Order</h1>
-	<div ng-repeat="item in items">
-		<span>{{item.title}}</span>
-		<input ng-model="item.quantity">
-		<span>{{item.price | currency}}</span>
-		<span>{{item.price * item.quantity | currency}}</span>
-		<button ng-click="remove($index)">Remove</button>
-	</div>
-	<script src="angular.js"></script>
-	<script>
-	function CartController($scope) {
-		$scope.items = [
-		{title: 'Paint pots', quantity: 8, price: 3.95},
-		{title: 'Polka dots', quantity: 17, price: 12.95},
-		{title: 'Pebbles', quantity: 5, price: 6.95}
-		];
-	    $scope.remove = function(index) {
-	        $scope.items.splice(index, 1);
-	    };
-	}
-	</script>
+<body>
+    <div ng-controller="CartController">
+        <h1>Your Order</h1>
+	    <div ng-repeat="item in items">
+		    <span>{{item.title}}</span>
+		    <input ng-model="item.quantity">
+		    <span>{{item.price | currency}}</span>
+		    <span>{{item.price * item.quantity | currency}}</span>
+		    <button ng-click="remove($index)">Remove</button>
+	    </div>    
+        <button ng-click="notifyItemLength()">
+            Log item number
+        </button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.js"></script>
+    <script>
+
+        var app = angular.module('myApp', []);
+
+        app.controller('BaseController', [
+            '$scope', '$http',
+            function($scope, $http) {
+                $scope.notify = function(message) {
+                    if ($http)
+                        console.log(message);
+                    else
+                        throw new Error('$http was not injected properly!');
+                };
+            }
+        ]);
+
+        app.controller('CartController', [
+            '$scope', '$controller', 
+            function ($scope, $controller) {
+
+                $controller('BaseController', { $scope: $scope });
+
+                $scope.notifyItemLength = function() {
+                    $scope.notify('Number of items is ' + $scope.items.length);
+                };
+
+                $scope.items = [
+                    { title: 'Paint pots', quantity: 8, price: 3.95 },
+                    { title: 'Polka dots', quantity: 17, price: 12.95 },
+                    { title: 'Pebbles', quantity: 5, price: 6.95 }
+                ];
+                $scope.remove = function(index) {
+                    $scope.items.splice(index, 1);
+                };
+
+                var $child = $scope.$new();
+                $child.notifyItemLength();
+                $child.items = [];
+                $child.notifyItemLength();
+            }
+        ]);
+
+    </script>
 </body>
 </html>
