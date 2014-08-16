@@ -17,7 +17,7 @@
         </button>
     </div>
     <script src="libs/angular.js"></script>
-    <script src="libs/angular.js"></script>
+    <script src="libs/jasmine-2.0.1/jasmine.js"></script>
     <script>
 
         var app = angular.module('myApp', []);
@@ -65,6 +65,7 @@
                 $scope.items.push({ title: 'Stones', quantity: 2, price: 126 });
                 
                 $child.notifyItemLength();
+                
             }
         ]);
 

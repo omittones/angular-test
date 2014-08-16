@@ -104,10 +104,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="angular.js" />
     <Content Include="index.htm" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="libs\angular.js" />
+    <Content Include="libs\jasmine-2.0.1\jasmine.js" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
