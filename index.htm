@@ -18,6 +18,9 @@
     </div>
     <script src="libs/angular.js"></script>
     <script src="libs/jasmine-2.0.1/jasmine.js"></script>
+    <script src="libs/jasmine-2.0.1/jasmine-html.js"></script>
+    <script src="libs/jasmine-2.0.1/boot.js"></script>
+    <link rel="stylesheet" type="text/css" href="libs/jasmine-2.0.1/jasmine.css">
     <script>
 
         var app = angular.module('myApp', []);
@@ -53,21 +56,47 @@
                 ];
                 
                 var $child = $scope.$new();
+        	      
+                console.assert($scope.items.length === 3);			
+				console.assert($child.items.length === 3);			
 
-                $child.notifyItemLength();
+				$child.remove(1); //OK
+				//OK $child.items.splice(1, 1);
+ 				//OK $child.items.length = 2;
+ 				//not OK   $child.items = [1,2];
 
-                $child.items = [];
+				console.assert($scope.items.length === 2);
+				console.assert($child.items.length === 2);
 
-                $child.notifyItemLength();
-
-                $scope.notifyItemLength();
-
-                $scope.items.push({ title: 'Stones', quantity: 2, price: 126 });
-                
-                $child.notifyItemLength();
-                
+				$scope.items.push({ title: 'Pebbles', quantity: 5, price: 6.95 });
+				
+				console.assert($scope.items.length === 3);
+				console.assert($child.items.length === 3);
             }
         ]);
+
+    </script>
+    <script>
+    
+		xdescribe('scope\'s child', function(){
+
+			it ('is isolated from parent scope', function() {
+
+				expect($scope.items.length).toBe(3);			
+				expect($child.items.length).toBe(3);			
+
+				$child.remove(1);    		
+
+				expect($scope.items.length).toBe(3);
+				expect($child.items.length).toBe(2);
+
+				$scope.items.push({ title: 'Pebbles', quantity: 5, price: 6.95 });
+
+				expect($scope.items.length).toBe(4);
+				expect($child.items.length).toBe(2);
+			});
+
+		});
 
     </script>
 </body>

@@ -108,7 +108,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libs\angular.js" />
+    <Content Include="libs\jasmine-2.0.1\boot.js" />
+    <Content Include="libs\jasmine-2.0.1\console.js" />
+    <Content Include="libs\jasmine-2.0.1\jasmine-html.js" />
+    <Content Include="libs\jasmine-2.0.1\jasmine.css" />
     <Content Include="libs\jasmine-2.0.1\jasmine.js" />
+    <Content Include="libs\jasmine-2.0.1\jasmine_favicon.png" />
+    <Content Include="libs\jasmine-2.0.1\SpecRunner.html" />
+    <Content Include="libs\jasmine-2.0.1\spec\PlayerSpec.js" />
+    <Content Include="libs\jasmine-2.0.1\spec\SpecHelper.js" />
+    <Content Include="libs\jasmine-2.0.1\src\Player.js" />
+    <Content Include="libs\jasmine-2.0.1\src\Song.js" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
