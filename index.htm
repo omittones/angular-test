@@ -1,17 +1,17 @@
 <html ng-app="myApp">
 <head>
-	<title>Your Shopping Cart</title>
+    <title>Your Shopping Cart</title>
 </head>
 <body>
     <div ng-controller="CartController">
         <h1>Your Order</h1>
-	    <div ng-repeat="item in items" ng-class="getRowClass($index)">
-		    <span>{{item.title}}</span>
-		    <input ng-model="item.quantity">
-		    <span>{{item.price | currency}}</span>
-		    <span>{{item.price * item.quantity | currency}}</span>
-		    <button ng-click="remove($index)">Remove</button>
-	    </div>
+        <div ng-repeat="item in items" ng-class="getRowClass($index)">
+            <span>{{item.title}}</span>
+            <input ng-model="item.quantity">
+            <span>{{item.price | currency}}</span>
+            <span>{{item.price * item.quantity | currency}}</span>
+            <button ng-click="remove($index)">Remove</button>
+        </div>
         <button ng-click="notifyItemLength()">
             Log item number
         </button>
@@ -22,8 +22,8 @@
     <script src="libs/jasmine-2.0.1/boot.js"></script>
     <style>
 
-		.row.even { background-color:#DDDDDD; }
-		.row.odd { background-color:#CCCCCC; }
+        .row.even { background-color:#DDDDDD; }
+        .row.odd { background-color:#CCCCCC; }
 
     </style>
     <link rel="stylesheet" type="text/css" href="libs/jasmine-2.0.1/jasmine.css">
@@ -41,12 +41,12 @@
                         throw new Error('$http was not injected properly!');
                 };
 
-				$scope.getRowClass = function(index) {
-					if (index % 2 === 0)
-						return { row:true, even:true };
-					else
-						return { row:true, odd:true };
-				};
+                $scope.getRowClass = function(index) {
+                    if (index % 2 === 0)
+                        return { row:true, even:true };
+                    else
+                        return { row:true, odd:true };
+                };
             }
         ]);
 
@@ -59,7 +59,7 @@
                 $scope.notifyItemLength = function() {
                     this.notify('Number of items is ' + this.items.length);
                 };
-				$scope.remove = function(index) {
+                $scope.remove = function(index) {
                     this.items.splice(index, 1);
                 };
                 $scope.items = [
@@ -71,45 +71,22 @@
                 var $child = $scope.$new();
 
                 console.assert($scope.items.length === 3);
-				console.assert($child.items.length === 3);
+                console.assert($child.items.length === 3);
 
-				$child.remove(1); //OK
-				//OK $child.items.splice(1, 1);
- 				//OK $child.items.length = 2;
- 				//not OK   $child.items = [1,2];
+                $child.remove(1); //OK
+                //OK $child.items.splice(1, 1);
+                //OK $child.items.length = 2;
+                //not OK   $child.items = [1,2];
 
-				console.assert($scope.items.length === 2);
-				console.assert($child.items.length === 2);
+                console.assert($scope.items.length === 2);
+                console.assert($child.items.length === 2);
 
-				$scope.items.push({ title: 'Pebbles', quantity: 5, price: 6.95 });
+                $scope.items.push({ title: 'Pebbles', quantity: 5, price: 6.95 });
 
-				console.assert($scope.items.length === 3);
-				console.assert($child.items.length === 3);
+                console.assert($scope.items.length === 3);
+                console.assert($child.items.length === 3);
             }
         ]);
-
-    </script>
-    <script>
-
-		xdescribe('scope\'s child', function(){
-
-			it ('is isolated from parent scope', function() {
-
-				expect($scope.items.length).toBe(3);
-				expect($child.items.length).toBe(3);
-
-				$child.remove(1);
-
-				expect($scope.items.length).toBe(3);
-				expect($child.items.length).toBe(2);
-
-				$scope.items.push({ title: 'Pebbles', quantity: 5, price: 6.95 });
-
-				expect($scope.items.length).toBe(4);
-				expect($child.items.length).toBe(2);
-			});
-
-		});
 
     </script>
 </body>
