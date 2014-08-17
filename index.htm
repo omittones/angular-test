@@ -5,13 +5,13 @@
 <body>
     <div ng-controller="CartController">
         <h1>Your Order</h1>
-	    <div ng-repeat="item in items">
+	    <div ng-repeat="item in items" ng-class="getRowClass($index)">
 		    <span>{{item.title}}</span>
 		    <input ng-model="item.quantity">
 		    <span>{{item.price | currency}}</span>
 		    <span>{{item.price * item.quantity | currency}}</span>
 		    <button ng-click="remove($index)">Remove</button>
-	    </div>    
+	    </div>
         <button ng-click="notifyItemLength()">
             Log item number
         </button>
@@ -20,6 +20,12 @@
     <script src="libs/jasmine-2.0.1/jasmine.js"></script>
     <script src="libs/jasmine-2.0.1/jasmine-html.js"></script>
     <script src="libs/jasmine-2.0.1/boot.js"></script>
+    <style>
+
+		.row.even { background-color:#DDDDDD; }
+		.row.odd { background-color:#CCCCCC; }
+
+    </style>
     <link rel="stylesheet" type="text/css" href="libs/jasmine-2.0.1/jasmine.css">
     <script>
 
@@ -34,11 +40,18 @@
                     else
                         throw new Error('$http was not injected properly!');
                 };
+
+				$scope.getRowClass = function(index) {
+					if (index % 2 === 0)
+						return { row:true, even:true };
+					else
+						return { row:true, odd:true };
+				};
             }
         ]);
 
         app.controller('CartController', [
-            '$scope', '$controller', 
+            '$scope', '$controller',
             function ($scope, $controller) {
 
                 $controller('BaseController', { $scope: $scope });
@@ -54,11 +67,11 @@
                     { title: 'Polka dots', quantity: 17, price: 12.95 },
                     { title: 'Pebbles', quantity: 5, price: 6.95 }
                 ];
-                
+
                 var $child = $scope.$new();
-        	      
-                console.assert($scope.items.length === 3);			
-				console.assert($child.items.length === 3);			
+
+                console.assert($scope.items.length === 3);
+				console.assert($child.items.length === 3);
 
 				$child.remove(1); //OK
 				//OK $child.items.splice(1, 1);
@@ -69,7 +82,7 @@
 				console.assert($child.items.length === 2);
 
 				$scope.items.push({ title: 'Pebbles', quantity: 5, price: 6.95 });
-				
+
 				console.assert($scope.items.length === 3);
 				console.assert($child.items.length === 3);
             }
@@ -77,15 +90,15 @@
 
     </script>
     <script>
-    
+
 		xdescribe('scope\'s child', function(){
 
 			it ('is isolated from parent scope', function() {
 
-				expect($scope.items.length).toBe(3);			
-				expect($child.items.length).toBe(3);			
+				expect($scope.items.length).toBe(3);
+				expect($child.items.length).toBe(3);
 
-				$child.remove(1);    		
+				$child.remove(1);
 
 				expect($scope.items.length).toBe(3);
 				expect($child.items.length).toBe(2);
