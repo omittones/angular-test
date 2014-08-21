@@ -16,7 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'libs/string.js',
-      'test/tino.SimpleSpec.js'
+      'test/tino.SimpleSpec.js',
+      'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js'
     ],
 
 
@@ -49,14 +50,24 @@ module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_DEBUG,
 
+    // display timestamp for log output
+    loggers:[
+    {
+        type: 'console',
+        pattern: "%d{ABSOLUTE} %[%-5p%] %c %m"
+        //layout: {
+        //    type: 'pattern',
+        //    pattern: "%d{ABSOLUTE} %[%-5p%] %c %m"
+        //}
+    }],
+
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [],
-
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
