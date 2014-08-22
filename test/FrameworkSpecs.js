@@ -1,23 +1,27 @@
+"use strict";
+
+require.config({
+    baseUrl: "/base",
+    paths: { },
+    waitSeconds: 15
+});
+
+require(["string"], function(string){
+    debugger;
+
+
+}, function(error){
+    debugger;
+
+});
+
+
 var log = {
     dump : console.info.bind(console),
     info : window.dump.bind(window)
 };
 
-(function () {
-
-    log.info('console.info called at the beggining of script!');
-
-    var functions = [];
-    for (var f in window) {
-        if (typeof window[f] === 'function') {
-            functions.push(f);
-        }
-    }
-    log.info(functions.join('\n'));
-
-})();
-
-describe('basic stuff', function () {
+describe('basic stuff', function() {
 
     it ('should work', function() {
 
