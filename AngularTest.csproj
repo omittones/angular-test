@@ -126,8 +126,9 @@
     <Content Include="libs\string.js" />
     <Content Include="test\config.browser.js" />
     <Content Include="test\config.karma.js" />
-    <Content Include="test\spec.framework.js" />
     <Content Include="test\run.html" />
+    <Content Include="test\spec.bootstrap.js" />
+    <Content Include="test\spec.javascript.js" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

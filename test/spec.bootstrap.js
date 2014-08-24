@@ -1,6 +1,6 @@
 "use strict";
 
-define(['libs/jasmine', 'libs/string', 'libs/log', 'libs/underscore'], function(jasmine, string, log, _) {
+define(['libs/string', 'libs/log', 'libs/underscore'], function(string, log, _) {
 
     describe('basic stuff', function() {
 
@@ -17,7 +17,7 @@ define(['libs/jasmine', 'libs/string', 'libs/log', 'libs/underscore'], function(
             var title = String.format('repeats for the {0} {1}',
                 i, (i===1 ? 'time':'times'));
 
-            //log.info(String.format('Setting up "{0}" test!', title));
+            log.info(String.format('Setting up "{0}" test!', title));
 
             it (title, function() {
 
@@ -37,7 +37,9 @@ define(['libs/jasmine', 'libs/string', 'libs/log', 'libs/underscore'], function(
             var temp;
 
             it('should set variable', function() {
+                expect(temp).toBeUndefined();
                 temp = true;
+                expect(temp).toBeDefined();
             });
 
             it('should read variable that was set before', function() {

@@ -11,8 +11,6 @@ require.config({
         'libs/jasmine': {
             exports:'window.jasmineRequire'
         },
-        //specify that jasmine runner depends on jasmine
-        //and that jasmine variable is exported
         'libs/jasmine-html': {
             deps: ['libs/jasmine', 'libs/jasmine-html-core'],
             exports: 'window.jasmine'
@@ -31,7 +29,11 @@ require.config({
 require(['libs/jasmine-html'],
     function(jasmine) {
 
-        require(['test/spec.framework'], function(spec){
+        var tests = [];
+        tests.push('test/spec.bootstrap');
+        tests.push('test/spec.javascript');
+
+        require(tests, function(){
 
             if (window.onload) window.onload();
 
