@@ -26,17 +26,9 @@ require.config({
     waitSeconds:15
 });
 
-require(['libs/jasmine-html'],
-    function(jasmine) {
-
-        var tests = [];
-        tests.push('test/spec.bootstrap');
-        tests.push('test/spec.javascript');
-
-        require(tests, function(){
-
+require(['libs/jasmine-html', 'test/config.tests'],
+    function(jasmine, tests) {
+        require(tests, function() {
             if (window.onload) window.onload();
-
         });
-
 });
