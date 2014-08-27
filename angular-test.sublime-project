@@ -1,8 +1,20 @@
 {
-	"folders":
-	[
-		{
-			"path": "."
-		}
-	]
+    "folders":
+    [
+        {
+            "path": ".",
+            "folder_exclude_patterns": ["node_modules", "Properties", "bin", "obj", "packages"]
+        }
+    ],
+
+    "ternjs":
+    {
+        "exclude": ["node_modules/**", "packages/**"],
+        "libs": ["browser"],
+        "plugins": {
+            "requirejs": {
+                "baseURL": "/"
+            }
+        }
+    }
 }
