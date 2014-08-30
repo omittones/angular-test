@@ -5,7 +5,9 @@ tmp
 .idea
 .DS_Store
 angular-phonecat-snapshots
-bower_components/
+libs/**
+!libs/jasmine-2.0.1
+!libs/*.js
 *.suo
 *.cache
 *.user

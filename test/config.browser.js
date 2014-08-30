@@ -5,7 +5,7 @@ require.config({
         'libs/jasmine':'libs/jasmine-2.0.1/jasmine',
         'libs/jasmine-html':'libs/jasmine-2.0.1/boot',
         'libs/jasmine-html-core':'libs/jasmine-2.0.1/jasmine-html',
-        'libs/underscore':'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min'
+        'libs/underscore':'libs/underscore-min/index'
     },
     shim: {
         'libs/jasmine': {

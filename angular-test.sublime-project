@@ -13,7 +13,8 @@
         "libs": ["browser"],
         "plugins": {
             "requirejs": {
-                "baseURL": "/"
+                "baseURL": "./",
+                "paths": { "lib/log": "lib/log.browser", "lib/underscore":"fake" }
             }
         }
     }

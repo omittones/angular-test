@@ -2,7 +2,7 @@ require.config({
     baseUrl: '/base',
     paths: {
         'libs/log':'libs/log.null',
-        'libs/underscore':'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min'
+        'libs/underscore':'libs/underscore-min/index'
     },
     shim: {
         'libs/underscore': {
