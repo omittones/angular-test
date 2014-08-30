@@ -1,0 +1,26 @@
+{
+  "name": "angular-test",
+  "version": "0.0.1",
+  "description": "## Overview",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "local-web-server": "^0.5.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omittones/angular-test.git"
+  },
+  "author": "augustin.juricic@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omittones/angular-test/issues"
+  },
+  "homepage": "https://github.com/omittones/angular-test"
+}

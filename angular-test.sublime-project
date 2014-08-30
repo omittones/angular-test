@@ -14,7 +14,7 @@
         "plugins": {
             "requirejs": {
                 "baseURL": "./",
-                "paths": { "lib/log": "lib/log.browser", "lib/underscore":"fake" }
+                "paths": { "lib/log": "lib/log.browser" }
             }
         }
     }
