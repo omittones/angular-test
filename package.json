@@ -7,7 +7,10 @@
     "test": "test"
   },
   "dependencies": {
-    "local-web-server": "^0.5.13"
+    "amdefine": "^0.1.0",
+    "jasmine": "^2.0.1",
+    "local-web-server": "^0.5.13",
+    "requirejs": "^2.1.14"
   },
   "devDependencies": {},
   "scripts": {

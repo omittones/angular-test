@@ -1,6 +1,14 @@
 <html ng-app="myApp">
 <head>
     <title>Your Shopping Cart</title>
+    <link rel="stylesheet" type="text/css" href="libs/jasmine-2.0.1/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+
+        .row.even { background-color:#DDDDDD; }
+        .row.odd { background-color:#CCCCCC; }
+
+    </style>
 </head>
 <body>
     <div ng-controller="CartController">
@@ -18,17 +26,10 @@
     </div>
     <script src="libs/angular.js"></script>
     <script src="libs/underscore-min/index.js"></script>
-    <style>
-
-        .row.even { background-color:#DDDDDD; }
-        .row.odd { background-color:#CCCCCC; }
-
-    </style>
-    <link rel="stylesheet" type="text/css" href="libs/jasmine-2.0.1/jasmine.css">
     <script>
 
         var app = angular.module('myApp', []);
-
+        
         app.controller('BaseController', [
             '$scope', '$http',
             function($scope, $http) {

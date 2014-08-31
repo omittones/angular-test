@@ -26,7 +26,7 @@
     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</textarea>
 */
 
-(function(window) {
+(function() {
 
     $type = String;
     $type.__typeName = 'String';
@@ -146,4 +146,4 @@
         return result;
     }
 
-})(window);
+})();

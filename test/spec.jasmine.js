@@ -12,6 +12,4 @@ define(['libs/string', 'libs/log', 'libs/underscore'], function(string, log, _) 
 
     });
 
-
-
 });
